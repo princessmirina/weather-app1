@@ -14,6 +14,7 @@ let windElement = document.querySelector("#wind");
 let temperatureIconElement = document.querySelector(
   ".current-temperature-icon"
 );
+let descriptionElement = document.querySelector("#description");
 
 // Function to format date and time using an approximate timezone offset (based on longitude)
 function formatDateAndTimeWithLongitude(timestamp, longitude) {
@@ -78,6 +79,9 @@ async function displayWeather(city) {
         console.error("Coordinates or time data is missing.");
         dateElement.innerHTML = "Invalid Date";
       }
+
+      //update description
+      descriptionElement.innerHTML = `${data.condition.description}`;
 
       // Update humidity
       humidityElement.innerHTML = `${data.temperature.humidity}%`; // Update humidity
